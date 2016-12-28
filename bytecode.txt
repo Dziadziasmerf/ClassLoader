@@ -1,0 +1,1 @@
+int zmienna 4
