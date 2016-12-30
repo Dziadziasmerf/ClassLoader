@@ -4,6 +4,11 @@ public class Klasa {
 	public String name;
 	Method_Area method_area;
 	
+	public Klasa(){
+		name = null;
+		method_area = new Method_Area();
+	}
+	
 	public void setName(String name){
 		this.name = name;
 	}
