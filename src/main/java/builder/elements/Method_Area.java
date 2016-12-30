@@ -1,5 +1,6 @@
 package elements;
 
+import factory.*;
 import java.util.*;
 
 public class Method_Area {
