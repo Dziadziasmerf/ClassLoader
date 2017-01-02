@@ -1,4 +1,4 @@
-package memory;
+package builder.memory;
 
 import factory.methods.Frame;
 
