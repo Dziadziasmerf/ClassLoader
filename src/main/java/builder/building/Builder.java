@@ -1,10 +1,10 @@
-package building;
+package builder.building;
 
-import elements.*;
+import builder.elements.*;
 import factory.*;
 import factory.variables.*;
 import factory.methods.*;
-import memory.Memory;
+import builder.memory.Memory;
 
 public class Builder {
 	Klasa klasa;
