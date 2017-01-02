@@ -7,6 +7,7 @@ import memory.Memory;
 public class Builder {
 	Klasa klasa;
 	Factory factory;
+	Variable variable;
 	
 	Builder(Factory f){
 		klasa = null;
@@ -25,6 +26,24 @@ public class Builder {
 	void buildAtribute(String name, VariableType type){
 		klasa.addAtr(factory.createVariable(name,type));
 	}
+	
+	void buildAtribute(String name, VariableType type, int value){
+		Variable v = factory.createVariable(name,type);
+		v.setValue(value);
+		klasa.addAtr(v);
+	};
+	
+	void buildAtribute(String name, VariableType type, char value){
+		Variable v = factory.createVariable(name,type);
+		v.setValue(value);
+		klasa.addAtr(v);
+	};
+	
+	void buildAtribute(String name, VariableType type, double value){
+		Variable v = factory.createVariable(name,type);
+		v.setValue(value);
+		klasa.addAtr(v);
+	};
 
 	void buildMethod(String name){
 		klasa.addMth(factory.createMethod(name));
