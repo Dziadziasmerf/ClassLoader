@@ -1,8 +1,8 @@
 package memory;
 
-import factory.*;
+import factory.methods.Frame;
 
-import java.awt.Frame;
+//import java.awt.Frame;
 import java.util.*;
 
 public class Stos {
