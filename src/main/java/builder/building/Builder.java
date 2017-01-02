@@ -28,19 +28,19 @@ public class Builder {
 	}
 	
 	void buildAtribute(String name, VariableType type, int value){
-		Variable v = factory.createVariable(name,type);
+		IntVariable v = factory.createVariable(name,type);
 		v.setValue(value);
 		klasa.addAtr(v);
 	};
 	
 	void buildAtribute(String name, VariableType type, char value){
-		Variable v = factory.createVariable(name,type);
+		CharVariable v = factory.createVariable(name,type);
 		v.setValue(value);
 		klasa.addAtr(v);
 	};
 	
 	void buildAtribute(String name, VariableType type, double value){
-		Variable v = factory.createVariable(name,type);
+		DoubleVariable v = factory.createVariable(name,type);
 		v.setValue(value);
 		klasa.addAtr(v);
 	};
