@@ -2,12 +2,13 @@ package building;
 
 import elements.*;
 import factory.*;
+import factory.variables.*;
+import factory.methods.*;
 import memory.Memory;
 
 public class Builder {
 	Klasa klasa;
 	Factory factory;
-	Variable variable;
 	
 	Builder(Factory f){
 		klasa = null;
@@ -26,25 +27,25 @@ public class Builder {
 	void buildAtribute(String name, VariableType type){
 		klasa.addAtr(factory.createVariable(name,type));
 	}
-	
+
 	void buildAtribute(String name, VariableType type, int value){
-		IntVariable v = factory.createVariable(name,type);
+		IntVariable v = (IntVariable) factory.createVariable(name,type);
 		v.setValue(value);
 		klasa.addAtr(v);
 	};
 	
 	void buildAtribute(String name, VariableType type, char value){
-		CharVariable v = factory.createVariable(name,type);
+		CharVariable v = (CharVariable) factory.createVariable(name,type);
 		v.setValue(value);
 		klasa.addAtr(v);
 	};
 	
 	void buildAtribute(String name, VariableType type, double value){
-		DoubleVariable v = factory.createVariable(name,type);
+		DoubleVariable v = (DoubleVariable) factory.createVariable(name,type);
 		v.setValue(value);
 		klasa.addAtr(v);
 	};
-
+	
 	void buildMethod(String name){
 		klasa.addMth(factory.createMethod(name));
 	}
