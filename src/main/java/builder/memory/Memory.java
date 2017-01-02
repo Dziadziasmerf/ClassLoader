@@ -1,7 +1,8 @@
 package memory;
 
 import elements.*;
-import factory.*;
+//import factory.*;
+import factory.methods.Frame;
 
 public class Memory {
 	private Heap heap;
