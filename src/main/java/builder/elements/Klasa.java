@@ -1,5 +1,8 @@
 package elements;
 
+import factory.variables.*;
+import factory.methods.*;
+
 public class Klasa {
 	public String name;
 	Method_Area method_area;
