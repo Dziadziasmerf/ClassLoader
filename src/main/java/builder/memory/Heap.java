@@ -1,6 +1,6 @@
-package memory;
+package builder.memory;
 
-import elements.Klasa;
+import builder.elements.Klasa;
 import java.util.*;
 
 public class Heap {
