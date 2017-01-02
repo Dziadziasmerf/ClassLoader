@@ -2,6 +2,7 @@ package elements;
 
 import factory.*;
 import java.util.*;
+import factory.variables.*;
 
 public class Method_Area {
 	LinkedList<Variable> atributes;
@@ -12,7 +13,7 @@ public class Method_Area {
 		methods = new LinkedList<Method>();
 	}
 	
-	void addAtr(Zmienna z){
+	void addAtr(Variable z){
 		atributes.add(z);
 	}
 	
