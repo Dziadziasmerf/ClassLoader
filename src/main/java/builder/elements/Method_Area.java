@@ -1,8 +1,9 @@
 package elements;
 
-import factory.*;
-import java.util.*;
 import factory.variables.*;
+import factory.methods.*;
+//import factory.*;
+import java.util.*;
 
 public class Method_Area {
 	LinkedList<Variable> atributes;
@@ -21,3 +22,4 @@ public class Method_Area {
 		methods.add(m);
 	}
 }
+
