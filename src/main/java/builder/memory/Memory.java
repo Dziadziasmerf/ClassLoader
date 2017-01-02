@@ -1,6 +1,6 @@
-package memory;
+package builder.memory;
 
-import elements.*;
+import builder.elements.*;
 //import factory.*;
 import factory.methods.Frame;
 
