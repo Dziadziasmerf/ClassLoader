@@ -10,52 +10,52 @@ public class Builder {
 	Klasa klasa;
 	Factory factory;
 	
-	Builder(Factory f){
+	public Builder(Factory f){
 		klasa = null;
 		factory = f;
 	};
 	
-	void buildClass(){
+	public void buildClass(){
 		if(klasa != null) klasa = null;
 		klasa = new Klasa();
 	}
 	
-	void buildName(String s){
+	public void buildName(String s){
 		klasa.setName(s);
 	}
 	
-	void buildAtribute(String name, VariableType type){
+	public void buildAtribute(String name, VariableType type){
 		klasa.addAtr(factory.createVariable(name,type));
 	}
 
-	void buildAtribute(String name, VariableType type, int value){
+	public void buildAtribute(String name, VariableType type, int value){
 		IntVariable v = (IntVariable) factory.createVariable(name,type);
 		v.setValue(value);
 		klasa.addAtr(v);
 	};
 	
-	void buildAtribute(String name, VariableType type, char value){
+	public void buildAtribute(String name, VariableType type, char value){
 		CharVariable v = (CharVariable) factory.createVariable(name,type);
 		v.setValue(value);
 		klasa.addAtr(v);
 	};
 	
-	void buildAtribute(String name, VariableType type, double value){
+	public void buildAtribute(String name, VariableType type, double value){
 		DoubleVariable v = (DoubleVariable) factory.createVariable(name,type);
 		v.setValue(value);
 		klasa.addAtr(v);
 	};
 	
-	void buildMethod(String name){
+	public void buildMethod(String name){
 		klasa.addMth(factory.createMethod(name));
 	}
 	
-	void toMemory(Memory m){
+	public void toMemory(Memory m){
 		m.addClass(klasa);
 		klasa = null;
 	}
 	
-	void printClass(){
+	public void printClass(){
 		System.out.println("Klasa w builderze: ");
 		System.out.println("Nazwa: " + klasa.name);
 	}
