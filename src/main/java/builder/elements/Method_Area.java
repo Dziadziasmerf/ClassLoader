@@ -6,8 +6,8 @@ import factory.methods.*;
 import java.util.*;
 
 public class Method_Area {
-	LinkedList<Variable> atributes;
-	LinkedList<Method> methods;
+	public LinkedList<Variable> atributes;
+	public LinkedList<Method> methods;
 	
 	public Method_Area(){
 		atributes = new LinkedList<Variable>();
