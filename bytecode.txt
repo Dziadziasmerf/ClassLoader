@@ -1,1 +1,7 @@
-int zmienna 4
+init mojaKlasa1
+i zmienna 4
+c znak d
+met_i metoda
+d zmiennaDoubleODługiejNazwie 4.46
+met_c metodaZwracajacaChar
+end
