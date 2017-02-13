@@ -45,6 +45,14 @@ public class Builder {
 		v.setValue(value);
 		klasa.addAtr(v);
 	};
+
+// do odkomentowania po zmianach w Variable
+//
+//	public void buildAtribute(String name, VariableType type, Object value){
+//		Variable v = factory.createVariable(name,type);
+//		v.setValue(value);
+//		klasa.addAtr(v);
+//	};
 	
 	public void buildMethod(String name){
 		klasa.addMth(factory.createMethod(name));
