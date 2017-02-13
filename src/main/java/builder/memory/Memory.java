@@ -38,6 +38,14 @@ public class Memory {
 		stos.clear();
 	}
 	
+	public Klasa find(String name){	
+		for(int i = 0; i < heap.klasy.size(); i++){
+			if(heap.klasy.get(i).name == name) return heap.klasy.get(i); 
+		}
+		
+		return null;
+	}
+	
 	void print(){
 		System.out.println("Sterta: "+heap.makeString());
 		System.out.println("Sterta: "+stos.makeString());
