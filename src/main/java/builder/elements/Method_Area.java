@@ -7,6 +7,7 @@ import java.util.*;
 
 public class Method_Area {
 	LinkedList<Variable> atributes;
+	LinkedList<Klasa> klasy;
 //	LinkedList<IntVariable> atributesInt;
 //	LinkedList<CharVariable> atributesChar;
 //	LinkedList<DoubleVariable> atributesDouble;
@@ -14,6 +15,7 @@ public class Method_Area {
 	
 	public Method_Area(){
 		atributes = new LinkedList<Variable>();
+		klasy = new LinkedList<Klasa>();
 //		atributesInt = new LinkedList<IntVariable>();
 //		atributesChar = new LinkedList<CharVariable>();
 //		atributesDouble = new LinkedList<DoubleVariable>();
@@ -40,13 +42,21 @@ public class Method_Area {
 		methods.add(m);
 	}
 	
-	void callMethod(){
+	void addKlasa(Klasa k, String name){
+		klasy.add(k);
+	}
+	
+	Method callMethod(String name){
+		for(int i = 0; i < methods.size(); i++){
+			if(methods.get(i).name == name) return methods.get(i);
+		}
+		return null;
 		
 	}
 	
 	public void print(){
 		for(int i = 0; i < atributes.size(); i++){
-			System.out.println(atributes.get(i).name);// + atributes.get(i).value);
+			System.out.println(atributes.get(i).name+" "+ atributes.get(i).getValue());// + atributes.get(i).value);
 				//(IntVariable) a = new IntVariable(atributes.get(i));
 			}
 /*		

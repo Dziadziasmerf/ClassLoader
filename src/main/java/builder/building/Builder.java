@@ -71,12 +71,22 @@ public class Builder {
 		klasa.addAtr(v);
 	};
 	
+	public Variable buildAtributeOut(String name, VariableType type, Object value){
+			Variable v = (Variable) factory.createVariable(name,type);
+			v.setValue(value);
+			return v;
+		};
+	
 	public void buildMethod(String name){
 		klasa.addMth(factory.createMethod(name));
 	}
 	
 	public Klasa getKlasa(){
 		return this.klasa;
+	}
+	
+	public void addClass(Klasa k, String name){
+		klasa.addKlasa(k, name);
 	}
 	
 	public void deleteKlasa(){
