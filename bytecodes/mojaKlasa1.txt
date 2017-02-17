@@ -2,7 +2,14 @@ init mojaKlasa1
 i zmienna 4
 c znak d
 mojaKlasa2 jejNazwa
-met_i metoda
+met metoda
+i zmienna 1
+i zmienna 2
+add
+i zmienna 1
+sub
+i zmienna 2
+mull
+end metoda
 d zmiennaDoubleODługiejNazwie 4.46
-met_c metodaZwracajacaChar
 end

@@ -19,11 +19,15 @@ public class Interpreter {
     Builder builder;
     Memory memory;
     private final String classname;
+    private String currentMethod;
+    private String methodBytecode;
 
     public Interpreter(String classname) {
         this.builder = new Builder(new Factory());
         this.memory = Memory.getInstance();
         this.classname = classname;
+        this.currentMethod = null;
+        this.methodBytecode = null;
     }
 
     public void read() throws FileNotFoundException{
@@ -54,43 +58,52 @@ public class Interpreter {
     private void interprete(String bytecodeLine) {
         String[] parts = bytecodeLine.split(" ");
 
-        if (parts[0].equals("init")) {
-            if(!builder.checkClassLoader(parts[1])){
-                builder.buildClass();
-                if (parts[1] != null) builder.buildName(parts[1]);
+        if(this.currentMethod != null){
+
+            if(parts[0].equals("end " + this.currentMethod)){
+                builder.buildMethod(this.currentMethod, this.methodBytecode);
+                this.currentMethod = null;
+                this.methodBytecode = null;
+            }else{
+                methodBytecode += bytecodeLine + "\n";
             }
-        } else if (parts[0].equals("i")) {
-            builder.buildAtribute(parts[1], VariableType.INT, Integer.valueOf(parts[2]));
-        } else if (parts[0].equals("d")) {
-            builder.buildAtribute(parts[1], VariableType.DOUBLE, Double.valueOf(parts[2]));
-        } else if (parts[0].equals("c")) {
-            builder.buildAtribute(parts[1], VariableType.CHAR, parts[2].charAt(0));
-        /*} else if (parts[0].equals("f")) {
-            builder.buildAtribute(parts[1], VariableType.FLOAT, Float.valueOf(parts[2]));
-        } else if (parts[0].equals("b")) {
-            builder.buildAtribute(parts[1], VariableType.BYTE, Byte.valueOf(parts[2]));
-        } else if (parts[0].equals("l")) {
-            builder.buildAtribute(parts[1], VariableType.LONG, Long.valueOf(parts[2]));
-        } else if (parts[0].equals("s")) {
-            builder.buildAtribute(parts[1], VariableType.SHORT, Short.valueOf(parts[2]));
-        } else if (parts[0].equals("bo")) {
-            builder.buildAtribute(parts[1], VariableType.BOOLEAN, Boolean.valueOf(parts[2]));*/
-        } else if (parts[0].equals("met_i")) {
-            builder.buildMethod(parts[1]);
-        } else if (parts[0].equals("met_d")) {
-            builder.buildMethod(parts[1]);
-        } else if (parts[0].equals("met_c")) {
-            builder.buildMethod(parts[1]);
-        } else if (parts[0].equals("end")) {
-            builder.printClass();
-            builder.toMemory(memory);
-        } else {
-            Interpreter innerInterpreter = new Interpreter(parts[0]);
-            try{
-                innerInterpreter.read();
-                builder.addClass(innerInterpreter.memory.find(parts[0]), parts[1]);
-            }catch(FileNotFoundException e){
-                LOGGER.info("<<ERROR>> Klasa składowa " + parts[0] + " klasy " + this.classname + " nie została odnaleziona !!!");
+
+        }else{
+
+            if (parts[0].equals("init")) {
+                if(!builder.checkClassLoader(parts[1])){
+                    builder.buildClass();
+                    if (parts[1] != null) builder.buildName(parts[1]);
+                }
+            } else if (parts[0].equals("i")) {
+                builder.buildAtribute(parts[1], VariableType.INT, Integer.valueOf(parts[2]));
+            } else if (parts[0].equals("d")) {
+                builder.buildAtribute(parts[1], VariableType.DOUBLE, Double.valueOf(parts[2]));
+            } else if (parts[0].equals("c")) {
+                builder.buildAtribute(parts[1], VariableType.CHAR, parts[2].charAt(0));
+            /*} else if (parts[0].equals("f")) {
+                builder.buildAtribute(parts[1], VariableType.FLOAT, Float.valueOf(parts[2]));
+            } else if (parts[0].equals("b")) {
+                builder.buildAtribute(parts[1], VariableType.BYTE, Byte.valueOf(parts[2]));
+            } else if (parts[0].equals("l")) {
+                builder.buildAtribute(parts[1], VariableType.LONG, Long.valueOf(parts[2]));
+            } else if (parts[0].equals("s")) {
+                builder.buildAtribute(parts[1], VariableType.SHORT, Short.valueOf(parts[2]));
+            } else if (parts[0].equals("bo")) {
+                builder.buildAtribute(parts[1], VariableType.BOOLEAN, Boolean.valueOf(parts[2]));*/
+            } else if (parts[0].equals("met")) {
+                this.currentMethod = parts[1];
+            } else if (parts[0].equals("end")) {
+                builder.printClass();
+                builder.toMemory(memory);
+            } else {
+                Interpreter innerInterpreter = new Interpreter(parts[0]);
+                try{
+                    innerInterpreter.read();
+                    builder.addClass(innerInterpreter.memory.find(parts[0]), parts[1]);
+                }catch(FileNotFoundException e){
+                    LOGGER.info("<<ERROR>> Klasa składowa " + parts[0] + " klasy " + this.classname + " nie została odnaleziona !!!");
+                }
             }
 
         }
