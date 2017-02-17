@@ -1,27 +1,31 @@
 package builder.memory;
 
-import factory.methods.Frame;
-
+import factory.variables.*;
 //import java.awt.Frame;
 import java.util.*;
 
 public class Stos {
-	public Stack<Frame> stos;
+	public Stack<Variable> stos;
 	
 	public Stos(){
-		stos = new Stack<Frame>();
+		stos = new Stack<Variable>();
 	}
 	
-	public void push(Frame f){
+	public void push(Variable f){
 		stos.push(f);
 	}
 	
-	public Frame pop(){
+	public Variable pop(){
 		return stos.pop();
 	}
 	
 	public void clear(){
 		stos.clear();
+	}
+	
+	public boolean isEmpty(){
+		if(stos.isEmpty() == true) return true;	
+		return false;		
 	}
 	
 	public String makeString(){

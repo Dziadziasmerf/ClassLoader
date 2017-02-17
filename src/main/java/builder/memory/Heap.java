@@ -18,6 +18,11 @@ public class Heap {
 		klasy.clear();
 	}
 	
+	public boolean isEmpty(){
+		if(klasy.isEmpty() == true) return true;
+		return false;
+	}
+	
 	public String makeString(){
 		return klasy.toString();
 	}

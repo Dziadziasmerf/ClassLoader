@@ -5,6 +5,7 @@ import factory.*;
 import factory.variables.*;
 import factory.methods.*;
 import builder.memory.Memory;
+import java.util.*;
 
 public class Builder {
 	public Klasa klasa;
@@ -86,7 +87,7 @@ public class Builder {
 			return v;
 		};
 	
-	public void buildMethod(String name, String bytecode){
+	public void buildMethod(String name, LinkedList<String> bytecode){
 		klasa.addMth(factory.createMethod(name, bytecode));
 	}
 	
