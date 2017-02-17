@@ -86,8 +86,8 @@ public class Builder {
 			return v;
 		};
 	
-	public void buildMethod(String name){
-		klasa.addMth(factory.createMethod(name));
+	public void buildMethod(String name, String bytecode){
+		klasa.addMth(factory.createMethod(name, bytecode));
 	}
 	
 	public Klasa getKlasa(){
