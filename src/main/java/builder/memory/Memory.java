@@ -2,7 +2,7 @@ package builder.memory;
 
 import builder.elements.*;
 //import factory.*;
-import factory.methods.Frame;
+import factory.variables.*;
 
 public class Memory {
 	private static Memory instance = null;
@@ -25,11 +25,11 @@ public class Memory {
 		heap.push(k);
 	}
 	
-	public void onStack(Frame r){
+	public void onStack(Variable r){
 		stos.push(r);
 	}
 	
-	public Frame offStack(){
+	public Variable offStack(){
 		return stos.pop();
 	}
 	
@@ -44,6 +44,16 @@ public class Memory {
 	public void clearAll(){
 		heap.clear();
 		stos.clear();
+	}
+	
+	public boolean isStosEmpty(){
+		if(stos.isEmpty() == true) return true;
+		return false;
+	}
+	
+	public boolean isHeapEmpty(){
+		if(heap.isEmpty() == true) return true;
+		return false;
 	}
 	
 	public Klasa find(String name){
