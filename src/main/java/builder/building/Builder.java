@@ -91,9 +91,5 @@ public class Builder {
 	public void printClass(){
 		System.out.println("Klasa w builderze: ");
 		System.out.println("Nazwa: " + klasa.name);
-		System.out.println("Atrybuty: ");
-		System.out.println(klasa.method_area.atributes.toString());
-		System.out.println("Metody: ");
-		System.out.println(klasa.method_area.methods.toString());
 	}
 }

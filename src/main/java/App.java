@@ -5,7 +5,7 @@ import interpreter.Interpreter;
  */
 public class App {
     public static void main(String[] args){
-        Interpreter interpreter = Interpreter.getInstance();
+        Interpreter interpreter = new Interpreter();
         interpreter.read();
 
     }

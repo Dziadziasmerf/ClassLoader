@@ -19,13 +19,9 @@ public class Interpreter {
     Builder builder;
     Memory memory;
 
-    private Interpreter() {
+    public Interpreter() {
         this.builder = new Builder(new Factory());
-        this.memory = new Memory();
-    }
-
-    public static Interpreter getInstance() {
-        return InterpreterHelper.instance;
+        this.memory = Memory.getInstance();
     }
 
     public void read() {
@@ -57,9 +53,10 @@ public class Interpreter {
         String[] parts = bytecodeLine.split(" ");
 
         if (parts[0].equals("init")) {
-
-            builder.buildClass();
-            if (parts[1] != null) builder.buildName(parts[1]);
+            if(!builder.checkClassLoader(parts[1])){
+                builder.buildClass();
+                if (parts[1] != null) builder.buildName(parts[1]);
+            }
         } else if (parts[0].equals("i")) {
             builder.buildAtribute(parts[1], VariableType.INT, Integer.valueOf(parts[2]));
         } else if (parts[0].equals("d")) {
