@@ -15,44 +15,61 @@ public class Builder {
 		factory = f;
 	};
 	
+	public boolean checkClassLoader(String name){
+		Class<?> c = null;
+		try{
+		c = ClassLoader.getSystemClassLoader().loadClass(name);
+		}catch(ClassNotFoundException e){
+			return false;
+		}
+		if (c == null) return false;
+		return true;
+	}
+	
 	public void buildClass(){
 		if(klasa != null) klasa = null;
 		klasa = new Klasa();
 	}
 	
 	public void buildName(String s){
+		//Class c;
+		//c = Class.forName(s);
+		//Field f = new Field();
 		klasa.setName(s);
 	}
 	
 	public void buildAtribute(String name, VariableType type){
-		klasa.addAtr(factory.createVariable(name,type));
+		klasa.addAtr((Variable) factory.createVariable(name,type));
 	}
 
-	public void buildAtribute(String name, VariableType type, int value){
+/*	public void buildAtribute(String name, VariableType type, int value){
 		IntVariable v = (IntVariable) factory.createVariable(name,type);
 		v.setValue(value);
-		klasa.addAtr(v);
+		klasa.addAtrInt(v);
 	};
 	
 	public void buildAtribute(String name, VariableType type, char value){
 		CharVariable v = (CharVariable) factory.createVariable(name,type);
 		v.setValue(value);
-		klasa.addAtr(v);
+		klasa.addAtrChar(v);
 	};
 	
 	public void buildAtribute(String name, VariableType type, double value){
 		DoubleVariable v = (DoubleVariable) factory.createVariable(name,type);
 		v.setValue(value);
+		klasa.addAtrDouble(v);
+	};
+	*/
+	public void buildAtribute(String name, VariableType type, Object value){
+	/*	switch(type){
+			case INT: Variable v = factory.createVariable(name, type);
+			case DOUBLE: DoubleVariable v = (DoubleVariable) factory.createVariable(name, type);
+			case CHAR: CharVariable v = (CharVariable) factory.createVariable(name, type);
+		}*/
+		Variable v = (Variable) factory.createVariable(name,type);
+		v.setValue(value);
 		klasa.addAtr(v);
 	};
-
-// do odkomentowania po zmianach w Variable
-//
-//	public void buildAtribute(String name, VariableType type, Object value){
-//		Variable v = factory.createVariable(name,type);
-//		v.setValue(value);
-//		klasa.addAtr(v);
-//	};
 	
 	public void buildMethod(String name){
 		klasa.addMth(factory.createMethod(name));
