@@ -16,12 +16,34 @@ public class Klasa {
 		this.name = name;
 	}
 	
+
 	public void addAtr(Variable z){
+		method_area.addAtr(z);
+	}
+	
+	public void addAtrInt(IntVariable z){
+		method_area.addAtr(z);
+	}
+	
+	public void addAtrChar(CharVariable z){
+		method_area.addAtr(z);
+	}
+	
+	public void addAtrDouble(DoubleVariable z){
 		method_area.addAtr(z);
 	}
 	
 	public void addMth(Method m){
 		method_area.addMth(m);
+	}
+	
+	public Method getMethod(String name){
+		return method_area.callMethod(name);
+	}
+	
+	public void print(){
+		System.out.println(name);
+		method_area.print();
 	}
 	
 }

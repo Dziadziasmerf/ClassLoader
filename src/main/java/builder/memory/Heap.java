@@ -22,4 +22,10 @@ public class Heap {
 		return klasy.toString();
 	}
 	
+	public void print(){
+		for(int i = 0; i < klasy.size(); i++){
+			klasy.get(i).print();
+		}
+		
+	}
 }

@@ -16,8 +16,8 @@ public class Stos {
 		stos.push(f);
 	}
 	
-	public void pop(){
-		stos.pop();
+	public Frame pop(){
+		return stos.pop();
 	}
 	
 	public void clear(){

@@ -5,13 +5,21 @@ import builder.elements.*;
 import factory.methods.Frame;
 
 public class Memory {
+	private static Memory instance = null;
 	private Heap heap;
 	private Stos stos;
 	
-	public Memory(){
+	protected Memory(){
 		heap = new Heap();
 		stos = new Stos();
 	}
+	
+    public static Memory getInstance(){
+        if(instance == null){
+        	instance = new Memory();
+        }
+        return instance;
+    }
 	
 	public void addClass(Klasa k){
 		heap.push(k);
@@ -21,25 +29,34 @@ public class Memory {
 		stos.push(r);
 	}
 	
-	void offStack(){
-		stos.pop();
+	public Frame offStack(){
+		return stos.pop();
 	}
 	
-	void clearHeap(){
+	public void clearHeap(){
 		heap.clear();
 	}
 
-	void clearStack(){
+	public void clearStack(){
 		stos.clear();
 	}
 	
-	void clearAll(){
+	public void clearAll(){
 		heap.clear();
 		stos.clear();
 	}
 	
-	void print(){
-		System.out.println("Sterta: "+heap.makeString());
-		System.out.println("Sterta: "+stos.makeString());
+	public Klasa find(String name){
+		for(int i = 0; i < heap.klasy.size(); i++){
+			if(heap.klasy.get(i).name == name) return heap.klasy.get(i); 
+		}
+		
+		return null;
+		
+	}
+	
+	public void print(){
+		heap.print();
+		System.out.println("Stos: "+stos.makeString());
 	}
 }
