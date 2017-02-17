@@ -40,7 +40,9 @@ public class Executor {
 		}
 	}
 	
-	private Variable add(Variable v1, Variable v2){
+	private Variable add(){
+		Variable v1 = pop();
+		Variable v2 = pop();
 		VariableType t = learnTypes(v1,v2);
 		switch(t){
 			case INT: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())+reader.readInt(v2.getValue())))));
@@ -50,7 +52,9 @@ public class Executor {
 		}
 	}
 	
-	private Variable mull(Variable v1, Variable v2){
+	private Variable mull(){
+		Variable v1 = pop();
+		Variable v2 = pop();
 		VariableType t = learnTypes(v1,v2);
 		switch(t){
 			case INT: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())*reader.readInt(v2.getValue())))));
@@ -60,7 +64,9 @@ public class Executor {
 		}
 	}
 	
-	private Variable sub(Variable v1, Variable v2){
+	private Variable sub(){
+		Variable v1 = pop();
+		Variable v2 = pop();
 		VariableType t = learnTypes(v1,v2);
 		switch(t){
 			case INT: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())-reader.readInt(v2.getValue())))));
@@ -70,11 +76,14 @@ public class Executor {
 		}
 	}
 	
-	private Variable div(Variable v1, Variable v2){
+	private Variable div(){
+		Variable v1 = pop();
+		Variable v2 = pop();
 		VariableType t = learnTypes(v1,v2);
 		switch(t){
 			case INT: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())/reader.readInt(v2.getValue())))));
 			case CHAR: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readChar(v1.getValue())/reader.readChar(v2.getValue())))));
+			case DOUBLE: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readChar(v1.getValue())/reader.readChar(v2.getValue())))));
 			default: return null;
 		}
 	}
@@ -84,11 +93,13 @@ public class Executor {
 	}
 	
 	private Variable pop(){
-		return memory.offStack();
+		if(memory.isStosEmpty() == false) return memory.offStack();
+		return null;
 	}
 	
 	private Variable ret(){
-		return pop();
+		if (memory.isStosEmpty() == false) return pop();
+		return null;
 	}
 	
 	public void execute(String name){//przykładowe dzialanie, cala metode mozna wyczyscic
@@ -97,8 +108,7 @@ public class Executor {
 		Variable v2 = builder.buildAtributeOut("B", VariableType.INT, (Object) 4);
 		push(v1);
 		push(v2);
-		System.out.println("WYNIK: "+ (mull(pop(),pop())).getValue());
+		System.out.println("WYNIK: "+ (mull().getValue()));
 	}
 	
 }
-
