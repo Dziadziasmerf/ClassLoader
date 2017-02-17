@@ -32,7 +32,6 @@ public class Interpreter {
         try {
             BufferedReader br = new BufferedReader(new FileReader("bytecode.txt"));
             try {
-                StringBuilder sb = new StringBuilder();
                 String line = br.readLine();
 
                 while (line != null) {
@@ -58,6 +57,7 @@ public class Interpreter {
         String[] parts = bytecodeLine.split(" ");
 
         if (parts[0].equals("init")) {
+
             builder.buildClass();
             if (parts[1] != null) builder.buildName(parts[1]);
         } else if (parts[0].equals("i")) {
@@ -66,6 +66,16 @@ public class Interpreter {
             builder.buildAtribute(parts[1], VariableType.DOUBLE, Double.valueOf(parts[2]));
         } else if (parts[0].equals("c")) {
             builder.buildAtribute(parts[1], VariableType.CHAR, parts[2].charAt(0));
+        /*} else if (parts[0].equals("f")) {
+            builder.buildAtribute(parts[1], VariableType.FLOAT, Float.valueOf(parts[2]));
+        } else if (parts[0].equals("b")) {
+            builder.buildAtribute(parts[1], VariableType.BYTE, Byte.valueOf(parts[2]));
+        } else if (parts[0].equals("l")) {
+            builder.buildAtribute(parts[1], VariableType.LONG, Long.valueOf(parts[2]));
+        } else if (parts[0].equals("s")) {
+            builder.buildAtribute(parts[1], VariableType.SHORT, Short.valueOf(parts[2]));
+        } else if (parts[0].equals("bo")) {
+            builder.buildAtribute(parts[1], VariableType.BOOLEAN, Boolean.valueOf(parts[2]));*/
         } else if (parts[0].equals("met_i")) {
             builder.buildMethod(parts[1]);
         } else if (parts[0].equals("met_d")) {
