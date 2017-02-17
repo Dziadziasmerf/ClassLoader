@@ -85,8 +85,8 @@ public class Builder {
 		return this.klasa;
 	}
 	
-	public void addClass(Klasa k){
-		klasa.addKlasa(k);
+	public void addClass(Klasa k, String name){
+		klasa.addKlasa(k, name);
 	}
 	
 	public void deleteKlasa(){
