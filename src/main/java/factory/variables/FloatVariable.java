@@ -6,7 +6,7 @@ public class FloatVariable extends Variable{
 		this.type = VariableType.FLOAT;
 	}
 
-    public FloatVariable(String name, int value) {
+    public FloatVariable(String name, Object value) {
         super(name);
         setValue(value);
     }
