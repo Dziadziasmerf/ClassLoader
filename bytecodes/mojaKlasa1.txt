@@ -1,6 +1,7 @@
 init mojaKlasa1
 i zmienna 4
 c znak d
+mojaKlasa2 jejNazwa
 met_i metoda
 d zmiennaDoubleODługiejNazwie 4.46
 met_c metodaZwracajacaChar

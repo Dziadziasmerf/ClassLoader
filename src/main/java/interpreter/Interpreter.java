@@ -18,15 +18,17 @@ public class Interpreter {
     private static final Logger LOGGER = Logger.getLogger(Interpreter.class.getName());
     Builder builder;
     Memory memory;
+    private final String classname;
 
-    public Interpreter() {
+    public Interpreter(String classname) {
         this.builder = new Builder(new Factory());
         this.memory = Memory.getInstance();
+        this.classname = classname;
     }
 
-    public void read() {
+    public void read() throws FileNotFoundException{
         try {
-            BufferedReader br = new BufferedReader(new FileReader("bytecode.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("bytecodes/" + this.classname + ".txt"));
             try {
                 String line = br.readLine();
 
@@ -45,7 +47,7 @@ public class Interpreter {
                 }
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 
@@ -83,11 +85,14 @@ public class Interpreter {
             builder.printClass();
             builder.toMemory(memory);
         } else {
-            LOGGER.info("Unrecognized bytecode sentence");
-        }
-    }
+            Interpreter innerInterpreter = new Interpreter(parts[0]);
+            try{
+                innerInterpreter.read();
+                builder.addClass(innerInterpreter.memory.find(parts[0]), parts[1]);
+            }catch(FileNotFoundException e){
+                LOGGER.info("<<ERROR>> Klasa składowa " + parts[0] + " nie została odnaleziona !!!");
+            }
 
-    private static class InterpreterHelper {
-        private static Interpreter instance = new Interpreter();
+        }
     }
 }
