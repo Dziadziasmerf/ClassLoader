@@ -41,7 +41,10 @@ public class Method_Area {
 	}
 	
 	void callMethod(){
-		
+		for(int i = 0; i < methods.size(); i++){
+			if(methods.get(i).name == name) return methods.get(i);
+		}
+		return null;
 	}
 	
 	public void print(){
