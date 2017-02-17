@@ -37,6 +37,10 @@ public class Klasa {
 		method_area.addMth(m);
 	}
 	
+	public void addKlasa(Klasa k){
+		method_area.addKlasa(k);
+	}
+	
 	public Method getMethod(String name){
 		return method_area.callMethod(name);
 	}
