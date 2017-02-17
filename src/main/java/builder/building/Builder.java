@@ -15,7 +15,9 @@ public class Builder {
 		factory = f;
 	};
 	
-	public boolean checkClassLoader(String name){
+	public boolean checkClassLoader(String name, Memory m){
+		if (m.find(name) != null) return true;
+		
 		Class<?> c = null;
 		try{
 		c = ClassLoader.getSystemClassLoader().loadClass(name);
@@ -24,6 +26,13 @@ public class Builder {
 		}
 		if (c == null) return false;
 		return true;
+		/*try{
+			Class<?> cl = Class.forName(name);
+			return true;
+		}catch(Exception e){
+			System.out.println("ERROR");
+			return false;
+		}*/
 	}
 	
 	public void buildClass(){
