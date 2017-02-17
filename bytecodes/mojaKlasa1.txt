@@ -3,12 +3,12 @@ i zmienna 4
 c znak d
 mojaKlasa2 jejNazwa
 met metoda
-i zmienna 1
-i zmienna 2
+i 1
+i 2
 add
-i zmienna 1
+i 1
 sub
-i zmienna 2
+i 2
 mull
 end metoda
 d zmiennaDoubleODługiejNazwie 4.46

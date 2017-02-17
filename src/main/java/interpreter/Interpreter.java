@@ -1,14 +1,18 @@
 package interpreter;
 
 import builder.building.Builder;
+import builder.elements.Klasa;
+import builder.executor.Executor;
 import builder.memory.Memory;
 import factory.Factory;
-import factory.variables.VariableType;
+import factory.methods.Method;
+import factory.variables.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.logging.Logger;
 
 /**
@@ -20,14 +24,14 @@ public class Interpreter {
     Memory memory;
     private final String classname;
     private String currentMethod;
-    private String methodBytecode;
+    private LinkedList<String> methodBytecode;
 
     public Interpreter(String classname) {
         this.builder = new Builder(new Factory());
         this.memory = Memory.getInstance();
         this.classname = classname;
         this.currentMethod = null;
-        this.methodBytecode = null;
+        this.methodBytecode = new LinkedList<String>();
     }
 
     public void read() throws FileNotFoundException{
@@ -65,13 +69,13 @@ public class Interpreter {
                 this.currentMethod = null;
                 this.methodBytecode = null;
             }else{
-                methodBytecode += bytecodeLine + "\n";
+                methodBytecode.add(bytecodeLine);
             }
 
         }else{
 
             if (parts[0].equals("init")) {
-                if(!builder.checkClassLoader(parts[1])){
+                if(!builder.checkClassLoader(parts[1], memory)){
                     builder.buildClass();
                     if (parts[1] != null) builder.buildName(parts[1]);
                 }
@@ -106,6 +110,41 @@ public class Interpreter {
                 }
             }
 
+        }
+    }
+
+    public static void interpreteMethod(Method method, Klasa klasa){
+        Executor executor = new Executor(Memory.getInstance(),klasa);
+        for(String line: method.bytecodeList){
+            String[] parts = line.split(" ");
+            if(parts.length == 1){
+                if(parts[0].equals("add")){
+                    executor.add();
+                } else if (parts[0].equals("sub")){
+                    executor.sub();
+                } else if (parts[0].equals("mull")){
+                    executor.mull();
+                } else if (parts[0].equals("div")){
+                    executor.div();
+                } else if(parts[0].equals("pop")){
+                    Variable v = executor.pop();
+                } else {
+                    LOGGER.info("Unrecognized bytecode command");
+                }
+            } else{
+                if (parts[0].equals("i")) {
+                    Variable v = new IntVariable(null,Integer.valueOf(parts[1]));
+                    executor.push(v);
+                } else if(parts[0].equals("d")){
+                    Variable v = new DoubleVariable(null,Double.valueOf(parts[1]));
+                    executor.push(v);
+                } else if(parts[0].equals("d")){
+                    Variable v = new CharVariable(null, parts[1].charAt(0));
+                    executor.push(v);
+                } else{
+                    LOGGER.info("Unrecognized bytecode command");
+                }
+            }
         }
     }
 }
