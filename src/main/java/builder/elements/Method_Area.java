@@ -42,7 +42,7 @@ public class Method_Area {
 		methods.add(m);
 	}
 	
-	void addKlasa(Klasa k){
+	void addKlasa(Klasa k, String name){
 		klasy.add(k);
 	}
 	
