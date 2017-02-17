@@ -90,7 +90,7 @@ public class Interpreter {
                 innerInterpreter.read();
                 builder.addClass(innerInterpreter.memory.find(parts[0]), parts[1]);
             }catch(FileNotFoundException e){
-                LOGGER.info("<<ERROR>> Klasa składowa " + parts[0] + " nie została odnaleziona !!!");
+                LOGGER.info("<<ERROR>> Klasa składowa " + parts[0] + " klasy " + this.classname + " nie została odnaleziona !!!");
             }
 
         }
