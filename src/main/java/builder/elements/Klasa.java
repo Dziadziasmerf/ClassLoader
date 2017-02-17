@@ -37,8 +37,8 @@ public class Klasa {
 		method_area.addMth(m);
 	}
 	
-	public void addKlasa(Klasa k){
-		method_area.addKlasa(k);
+	public void addKlasa(Klasa k, String name){
+		method_area.addKlasa(k, name);
 	}
 	
 	public Method getMethod(String name){
