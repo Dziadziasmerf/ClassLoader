@@ -75,6 +75,14 @@ public class Builder {
 		klasa.addMth(factory.createMethod(name));
 	}
 	
+	public Klasa getKlasa(){
+		return this.klasa;
+	}
+	
+	public void deleteKlasa(){
+		this.klasa = null;
+	}
+	
 	public void toMemory(Memory m){
 		m.addClass(klasa);
 		klasa = null;
