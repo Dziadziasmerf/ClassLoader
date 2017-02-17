@@ -35,13 +35,13 @@ public class Method {
     //	this.frame = frame;
     //}
     
-    //public Frame getFrame(){
-    //	return frame;
-    //}
-    
-    public LinkedList<String> getByteCode(){
+    public LinkedList<String> getFrame(){
     	return frame;
     }
+    
+    //public LinkedList<String> getByteCode(){
+    //	return frame;
+    //}
 
 
 }
