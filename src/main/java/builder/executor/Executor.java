@@ -26,7 +26,7 @@ public class Executor {
 		this.klasa = k;
 	}
 	
-	private VariableType learnTypes(Variable v1, Variable v2){
+	public VariableType learnTypes(Variable v1, Variable v2){
 		if(v1.getType() != v2.getType()){
 			return null;
 		}else{
@@ -40,7 +40,7 @@ public class Executor {
 		}
 	}
 	
-	private Variable add(){
+	public Variable add(){
 		Variable v1 = pop();
 		Variable v2 = pop();
 		VariableType t = learnTypes(v1,v2);
@@ -52,7 +52,7 @@ public class Executor {
 		}
 	}
 	
-	private Variable mull(){
+	public Variable mull(){
 		Variable v1 = pop();
 		Variable v2 = pop();
 		VariableType t = learnTypes(v1,v2);
@@ -64,7 +64,7 @@ public class Executor {
 		}
 	}
 	
-	private Variable sub(){
+	public Variable sub(){
 		Variable v1 = pop();
 		Variable v2 = pop();
 		VariableType t = learnTypes(v1,v2);
@@ -76,7 +76,7 @@ public class Executor {
 		}
 	}
 	
-	private Variable div(){
+	public Variable div(){
 		Variable v1 = pop();
 		Variable v2 = pop();
 		VariableType t = learnTypes(v1,v2);
@@ -88,16 +88,16 @@ public class Executor {
 		}
 	}
 	
-	private void push(Variable v){
+	public void push(Variable v){
 		memory.onStack(v); //push
 	}
 	
-	private Variable pop(){
+	public Variable pop(){
 		if(memory.isStosEmpty() == false) return memory.offStack();
 		return null;
 	}
 	
-	private Variable ret(){
+	public Variable ret(){
 		if (memory.isStosEmpty() == false) return pop();
 		return null;
 	}
