@@ -5,9 +5,23 @@ package factory.variables;
  */
 public abstract class Variable {
     public String name;
+    protected VariableType type;
+    protected Object value;
 
     public Variable(String name) {
         this.name = name;
+    }
+    
+    public VariableType getType(){
+    	return type;
+    }
+    
+    public Object getValue(){
+    	return value;
+    }
+    
+    public void setValue(Object value){
+    	this.value = value;
     }
 
 }

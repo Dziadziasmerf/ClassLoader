@@ -1,24 +1,24 @@
 package factory.variables;
 
-import lombok.Getter;
-import lombok.Setter;
+//import lombok.Getter;
+//import lombok.Setter;
 
 /**
  * Created by dziadziasmerf on 28.12.16.
  */
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 public class CharVariable extends Variable{
-
-    private char value;
 
     public CharVariable(String name) {
         super(name);
+        this.type = VariableType.CHAR;
     }
 
-    public CharVariable(String name, char value) {
+    public CharVariable(String name, Object value) {
         super(name);
         setValue(value);
     }
+
 }

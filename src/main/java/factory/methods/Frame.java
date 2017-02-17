@@ -5,7 +5,15 @@ package factory.methods;
  */
 public class Frame {
 
-    public Frame() {
+	Method method;
+	
+    public Frame(Method m) {
         //TODO
+    	this.method = m;
     }
+    
+    public Method getMethod(){
+    	return method;
+    }
+    
 }

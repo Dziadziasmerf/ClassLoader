@@ -1,23 +1,22 @@
 package factory.variables;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+//import lombok.Data;
+//import lombok.Getter;
+//import lombok.Setter;
 
 /**
  * Created by dziadziasmerf on 28.12.16.
  */
-@Getter
-@Setter
+//@Getter
+//@Setter
 public class DoubleVariable extends Variable {
-
-    private double value;
 
     public DoubleVariable(String name) {
         super(name);
+        this.type = VariableType.DOUBLE;
     }
 
-    public DoubleVariable(String name, double value) {
+    public DoubleVariable(String name, Object value) {
         super(name);
         setValue(value);
     }

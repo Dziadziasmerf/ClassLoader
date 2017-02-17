@@ -6,5 +6,9 @@ package factory.variables;
 public enum VariableType {
     INT(),
     CHAR(),
-    DOUBLE()
+    DOUBLE(),
+    LONG(),
+    STRING(),
+    FLOAT(),
+    BYTE()
 }

@@ -115,7 +115,7 @@ public class Interpreter {
 
     public static void interpreteMethod(Method method, Klasa klasa){
         Executor executor = new Executor(Memory.getInstance(),klasa);
-        for(String line: method.bytecodeList){
+        for(String line: method.getFrame()){
             String[] parts = line.split(" ");
             if(parts.length == 1){
                 if(parts[0].equals("add")){
