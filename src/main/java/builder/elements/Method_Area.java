@@ -7,7 +7,8 @@ import java.util.*;
 
 public class Method_Area {
 	LinkedList<Variable> atributes;
-	LinkedList<Klasa> klasy;
+//	LinkedList<Klasa> klasy;
+	Map<String,Klasa> klasy;
 //	LinkedList<IntVariable> atributesInt;
 //	LinkedList<CharVariable> atributesChar;
 //	LinkedList<DoubleVariable> atributesDouble;
@@ -15,7 +16,7 @@ public class Method_Area {
 	
 	public Method_Area(){
 		atributes = new LinkedList<Variable>();
-		klasy = new LinkedList<Klasa>();
+		klasy = new HashMap<String,Klasa>();
 //		atributesInt = new LinkedList<IntVariable>();
 //		atributesChar = new LinkedList<CharVariable>();
 //		atributesDouble = new LinkedList<DoubleVariable>();
@@ -43,7 +44,7 @@ public class Method_Area {
 	}
 	
 	void addKlasa(Klasa k, String name){
-		klasy.add(k);
+		klasy.put(name,k);
 	}
 	
 	Method callMethod(String name){
