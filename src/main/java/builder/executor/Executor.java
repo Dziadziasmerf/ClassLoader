@@ -40,51 +40,67 @@ public class Executor {
 		}
 	}
 	
-	public Variable add(){
+	public void add(){
 		Variable v1 = pop();
 		Variable v2 = pop();
 		VariableType t = learnTypes(v1,v2);
 		switch(t){
-			case INT: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())+reader.readInt(v2.getValue())))));
-			case CHAR: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readChar(v1.getValue())+reader.readChar(v2.getValue())))));
-			case DOUBLE: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readDouble(v1.getValue())+reader.readDouble(v2.getValue())))));
-			default: return null;
+			case INT: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())+reader.readInt(v2.getValue())))));
+			case CHAR: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readChar(v1.getValue())+reader.readChar(v2.getValue())))));
+			case DOUBLE: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readDouble(v1.getValue())+reader.readDouble(v2.getValue())))));
+			case FLOAT: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readFloat(v1.getValue())+reader.readFloat(v2.getValue())))));
+			case STRING: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readString(v1.getValue())+reader.readString(v2.getValue())))));
+			case LONG: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readLong(v1.getValue())+reader.readLong(v2.getValue())))));
+//			case BYTE: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readByte(v1.getValue())+reader.readByte(v2.getValue())))));
+			default: push(null);
 		}
 	}
 	
-	public Variable mull(){
+	public void mull(){
 		Variable v1 = pop();
 		Variable v2 = pop();
 		VariableType t = learnTypes(v1,v2);
 		switch(t){
-			case INT: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())*reader.readInt(v2.getValue())))));
-			case CHAR: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readChar(v1.getValue())*reader.readChar(v2.getValue())))));
-			case DOUBLE: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readDouble(v1.getValue())*reader.readDouble(v2.getValue())))));
-			default: return null;
+		case INT: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())*reader.readInt(v2.getValue())))));
+		case CHAR: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readChar(v1.getValue())*reader.readChar(v2.getValue())))));
+		case DOUBLE: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readDouble(v1.getValue())*reader.readDouble(v2.getValue())))));
+		case FLOAT: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readFloat(v1.getValue())*reader.readFloat(v2.getValue())))));
+//		case STRING: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readString(v1.getValue())*reader.readString(v2.getValue())))));
+		case LONG: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readLong(v1.getValue())*reader.readLong(v2.getValue())))));
+//		case BYTE: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readByte(v1.getValue())+reader.readByte(v2.getValue())))));
+		default: push(null);
 		}
 	}
 	
-	public Variable sub(){
+	public void sub(){
 		Variable v1 = pop();
 		Variable v2 = pop();
 		VariableType t = learnTypes(v1,v2);
 		switch(t){
-			case INT: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())-reader.readInt(v2.getValue())))));
-			case CHAR: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readChar(v1.getValue())-reader.readChar(v2.getValue())))));
-			case DOUBLE: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readDouble(v1.getValue())-reader.readDouble(v2.getValue())))));
-			default: return null;
+		case INT: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())-reader.readInt(v2.getValue())))));
+		case CHAR: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readChar(v1.getValue())-reader.readChar(v2.getValue())))));
+		case DOUBLE: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readDouble(v1.getValue())-reader.readDouble(v2.getValue())))));
+		case FLOAT: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readFloat(v1.getValue())-reader.readFloat(v2.getValue())))));
+//		case STRING: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readString(v1.getValue())-reader.readString(v2.getValue())))));
+		case LONG: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readLong(v1.getValue())-reader.readLong(v2.getValue())))));
+//		case BYTE: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readByte(v1.getValue())-reader.readByte(v2.getValue())))));
+		default: push(null);
 		}
 	}
 	
-	public Variable div(){
+	public void div(){
 		Variable v1 = pop();
 		Variable v2 = pop();
 		VariableType t = learnTypes(v1,v2);
 		switch(t){
-			case INT: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())/reader.readInt(v2.getValue())))));
-			case CHAR: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readChar(v1.getValue())/reader.readChar(v2.getValue())))));
-			case DOUBLE: return (builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readChar(v1.getValue())/reader.readChar(v2.getValue())))));
-			default: return null;
+		case INT: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())/reader.readInt(v2.getValue())))));
+		case CHAR: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readChar(v1.getValue())/reader.readChar(v2.getValue())))));
+		case DOUBLE: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readDouble(v1.getValue())/reader.readDouble(v2.getValue())))));
+		case FLOAT: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readFloat(v1.getValue())/reader.readFloat(v2.getValue())))));
+//		case STRING: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readString(v1.getValue())/reader.readString(v2.getValue())))));
+		case LONG: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readLong(v1.getValue())/reader.readLong(v2.getValue())))));
+//		case BYTE: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readByte(v1.getValue())/reader.readByte(v2.getValue())))));
+		default: push(null);
 		}
 	}
 	
@@ -108,7 +124,7 @@ public class Executor {
 		Variable v2 = builder.buildAtributeOut("B", VariableType.INT, (Object) 4);
 		push(v1);
 		push(v2);
-		System.out.println("WYNIK: "+ (mull().getValue()));
+		//System.out.println("WYNIK: "+ (mull().getValue()));
 	}
 	
 }
