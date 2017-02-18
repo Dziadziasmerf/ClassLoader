@@ -125,7 +125,11 @@ public class Executor {
 	}
 	
 	public Variable ret(){
-		if (memory.isStosEmpty() == false) return pop();
+		if (memory.isStosEmpty() == false){
+			Variable v = pop();
+			System.out.println("Zwracana wartosc z metody: " + v.getValue().toString());
+			return v;
+		}
 		return null;
 	}
 	

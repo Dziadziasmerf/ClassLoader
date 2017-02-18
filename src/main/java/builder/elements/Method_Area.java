@@ -49,7 +49,7 @@ public class Method_Area {
 	
 	Method callMethod(String name){
 		for(int i = 0; i < methods.size(); i++){
-			if(methods.get(i).name == name) return methods.get(i);
+			if(methods.get(i).name.equals(name)) return methods.get(i);
 		}
 		return null;
 		

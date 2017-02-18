@@ -3,8 +3,8 @@ i zmienna 4
 c znak d
 mojaKlasa2 jejNazwa
 met metoda
-i 1
-i 2
+i 8
+i 4
 add
 i 1
 sub

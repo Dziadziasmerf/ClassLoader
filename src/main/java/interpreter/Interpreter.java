@@ -57,6 +57,7 @@ public class Interpreter {
         } catch (FileNotFoundException e) {
             throw e;
         }
+        //memory.print(); <<CHECK>>
     }
 
     private void interprete(String bytecodeLine) {
