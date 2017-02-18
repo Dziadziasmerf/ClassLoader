@@ -63,11 +63,11 @@ public class Interpreter {
         String[] parts = bytecodeLine.split(" ");
 
         if(this.currentMethod != null){
+            if(parts[0].equals("end") && parts[1].equals(this.currentMethod)){
 
-            if(parts[0].equals("end " + this.currentMethod)){
                 builder.buildMethod(this.currentMethod, this.methodBytecode);
                 this.currentMethod = null;
-                this.methodBytecode = null;
+                this.methodBytecode = new LinkedList<String>();
             }else{
                 methodBytecode.add(bytecodeLine);
             }
