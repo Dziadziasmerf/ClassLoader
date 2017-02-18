@@ -85,16 +85,14 @@ public class Interpreter {
                 builder.buildAtribute(parts[1], VariableType.DOUBLE, Double.valueOf(parts[2]));
             } else if (parts[0].equals("c")) {
                 builder.buildAtribute(parts[1], VariableType.CHAR, parts[2].charAt(0));
-            /*} else if (parts[0].equals("f")) {
+            } else if (parts[0].equals("f")) {
                 builder.buildAtribute(parts[1], VariableType.FLOAT, Float.valueOf(parts[2]));
             } else if (parts[0].equals("b")) {
                 builder.buildAtribute(parts[1], VariableType.BYTE, Byte.valueOf(parts[2]));
             } else if (parts[0].equals("l")) {
                 builder.buildAtribute(parts[1], VariableType.LONG, Long.valueOf(parts[2]));
             } else if (parts[0].equals("s")) {
-                builder.buildAtribute(parts[1], VariableType.SHORT, Short.valueOf(parts[2]));
-            } else if (parts[0].equals("bo")) {
-                builder.buildAtribute(parts[1], VariableType.BOOLEAN, Boolean.valueOf(parts[2]));*/
+                builder.buildAtribute(parts[1], VariableType.STRING, parts[2]);
             } else if (parts[0].equals("met")) {
                 this.currentMethod = parts[1];
             } else if (parts[0].equals("end")) {
@@ -128,6 +126,8 @@ public class Interpreter {
                     executor.div();
                 } else if(parts[0].equals("pop")){
                     Variable v = executor.pop();
+                } else if(parts[0].equals("ret")){
+                    Variable v = executor.ret();
                 } else {
                     LOGGER.info("Unrecognized bytecode command");
                 }
@@ -138,8 +138,20 @@ public class Interpreter {
                 } else if(parts[0].equals("d")){
                     Variable v = new DoubleVariable(null,Double.valueOf(parts[1]));
                     executor.push(v);
-                } else if(parts[0].equals("d")){
+                } else if(parts[0].equals("c")){
                     Variable v = new CharVariable(null, parts[1].charAt(0));
+                    executor.push(v);
+                } else if(parts[0].equals("f")){
+                    Variable v = new FloatVariable(null, Float.valueOf(parts[1]));
+                    executor.push(v);
+                } else if(parts[0].equals("l")){
+                    Variable v = new LongVariable(null, Long.valueOf(parts[1]));
+                    executor.push(v);
+                } else if(parts[0].equals("s")){
+                    Variable v = new StringVariable(null, parts[1]);
+                    executor.push(v);
+                } else if(parts[0].equals("b")){
+                    Variable v = new ByteVariable(null, Byte.valueOf(parts[1]));
                     executor.push(v);
                 } else{
                     LOGGER.info("Unrecognized bytecode command");

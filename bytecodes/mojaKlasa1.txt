@@ -10,6 +10,7 @@ i 1
 sub
 i 2
 mull
+ret
 end metoda
 d zmiennaDoubleODługiejNazwie 4.46
 end
