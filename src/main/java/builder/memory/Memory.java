@@ -66,7 +66,9 @@ public class Memory {
 	}
 	
 	public void print(){
+		System.out.println("Sterta: ");
 		heap.print();
 		System.out.println("Stos: "+stos.makeString());
+		//stos.print();
 	}
 }
