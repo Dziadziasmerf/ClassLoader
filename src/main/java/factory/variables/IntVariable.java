@@ -18,6 +18,7 @@ public class IntVariable extends Variable {
     public IntVariable(String name, int value) {
         super(name);
         setValue(value);
+        this.type = VariableType.INT;
     }
 
 }

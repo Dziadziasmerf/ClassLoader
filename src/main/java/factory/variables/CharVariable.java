@@ -19,6 +19,7 @@ public class CharVariable extends Variable{
     public CharVariable(String name, Object value) {
         super(name);
         setValue(value);
+        this.type = VariableType.CHAR;
     }
 
 }

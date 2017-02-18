@@ -19,6 +19,7 @@ public class DoubleVariable extends Variable {
     public DoubleVariable(String name, Object value) {
         super(name);
         setValue(value);
+        this.type = VariableType.DOUBLE;
     }
 
 }
