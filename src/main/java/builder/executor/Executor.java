@@ -46,15 +46,15 @@ public class Executor {
 	}
 	
 	public void add(){
-		System.out.println("POCZ ADD");
-		memory.print();
+		//System.out.println("POCZ ADD");
+		//memory.print();
 		Variable v1 = pop();
-		System.out.println("POP1"+ v1.getType());
+		//System.out.println("POP1"+ v1.getType());
 		Variable v2 = pop();
-		System.out.println("POP2"+v2.getType());
+		//System.out.println("POP2"+v2.getType());
 		VariableType t = learnTypes(v1,v2);
-		System.out.println(t);
-		System.out.println("AAAAA" + builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())+reader.readInt(v2.getValue())))).getValue());
+		//System.out.println(t);
+		//System.out.println("AAAAA" + builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())+reader.readInt(v2.getValue())))).getValue());
 		switch(t){
 			case INT: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readInt(v1.getValue())+reader.readInt(v2.getValue()))))); break;
 			case CHAR: push(builder.buildAtributeOut(v1.name, v1.getType(),((Object)(reader.readChar(v1.getValue())+reader.readChar(v2.getValue()))))); break;
@@ -118,7 +118,11 @@ public class Executor {
 	}
 	
 	public Variable ret(){
-		if (memory.isStosEmpty() == false) return pop();
+		if (memory.isStosEmpty() == false){
+			Variable v = pop();
+			System.out.println("Zwracana wartosc z metody: " + v.getValue().toString());
+			return v;
+		}
 		return null;
 	}
 	
