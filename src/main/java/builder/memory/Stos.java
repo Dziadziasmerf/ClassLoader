@@ -16,7 +16,8 @@ public class Stos {
 	}
 	
 	public Variable pop(){
-		return stos.pop();
+		if(this.stos.isEmpty() == false )return stos.pop();
+		return null;
 	}
 	
 	public void clear(){
@@ -26,6 +27,16 @@ public class Stos {
 	public boolean isEmpty(){
 		if(stos.isEmpty() == true) return true;	
 		return false;		
+	}
+	
+	public void print(){
+		Stack<Variable> s = this.stos;
+		Variable v = null;
+		System.out.println("Stos: ");
+		while(s.isEmpty() == false){
+		//	v = s.pop();
+		/*	if(v == null) */System.out.println(s.pop().getValue());
+		}
 	}
 	
 	public String makeString(){
