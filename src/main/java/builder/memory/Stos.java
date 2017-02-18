@@ -33,9 +33,7 @@ public class Stos {
 		Stack<Variable> s = this.stos;
 		Variable v = null;
 		System.out.println("Stos: ");
-		while(s.isEmpty() == false){
-		//	v = s.pop();
-		/*	if(v == null) */System.out.println(s.pop().getValue());
+		while(s.isEmpty() == false){System.out.println(s.pop().getValue());
 		}
 	}
 	
