@@ -111,5 +111,6 @@ public class Builder {
 	public void printClass(){
 		System.out.println("Klasa w builderze: ");
 		System.out.println("Nazwa: " + klasa.name);
+		klasa.print();
 	}
 }
