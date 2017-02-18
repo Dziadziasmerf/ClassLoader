@@ -9,5 +9,6 @@ public class ByteVariable extends Variable{
 	    public ByteVariable(String name, Object value) {
 	        super(name);
 	        setValue(value);
+	        this.type = VariableType.BYTE;
 	    }
 }
