@@ -1,0 +1,16 @@
+init mojaKlasa1
+i zmienna 4
+c znak d
+mojaKlasa2 jejNazwa
+met metoda
+i 8
+i 4
+add
+i 1
+sub
+i 2
+mull
+ret
+end metoda
+d zmiennaDoubleODługiejNazwie 4.46
+end

@@ -5,58 +5,81 @@ import factory.*;
 import factory.variables.*;
 import factory.methods.*;
 import builder.memory.Memory;
+import interpreter.Interpreter;
+
+import java.util.*;
 
 public class Builder {
-	Klasa klasa;
+	public Klasa klasa;
 	Factory factory;
 	
-	Builder(Factory f){
+	public Builder(Factory f){
 		klasa = null;
 		factory = f;
 	};
 	
-	void buildClass(){
+	public boolean checkClassLoader(String name, Memory m){
+		if (m.find(name) != null) return true;
+		
+		Class<?> c = null;
+		try{
+		c = ClassLoader.getSystemClassLoader().loadClass(name);
+		}catch(ClassNotFoundException e){
+			return false;
+		}
+		if (c == null) return false;
+		return true;
+	}
+	
+	public void buildClass(){
 		if(klasa != null) klasa = null;
 		klasa = new Klasa();
 	}
 	
-	void buildName(String s){
+	public void buildName(String s){
 		klasa.setName(s);
 	}
 	
-	void buildAtribute(String name, VariableType type){
-		klasa.addAtr(factory.createVariable(name,type));
+	public void buildAtribute(String name, VariableType type){
+		klasa.addAtr((Variable) factory.createVariable(name,type));
 	}
-
-	void buildAtribute(String name, VariableType type, int value){
-		IntVariable v = (IntVariable) factory.createVariable(name,type);
+	public void buildAtribute(String name, VariableType type, Object value){
+		Variable v = (Variable) factory.createVariable(name,type);
 		v.setValue(value);
 		klasa.addAtr(v);
 	};
 	
-	void buildAtribute(String name, VariableType type, char value){
-		CharVariable v = (CharVariable) factory.createVariable(name,type);
-		v.setValue(value);
-		klasa.addAtr(v);
-	};
+	public Variable buildAtributeOut(String name, VariableType type, Object value){
+			Variable v = (Variable) factory.createVariable(name,type);
+			v.setValue(value);
+			return v;
+		};
 	
-	void buildAtribute(String name, VariableType type, double value){
-		DoubleVariable v = (DoubleVariable) factory.createVariable(name,type);
-		v.setValue(value);
-		klasa.addAtr(v);
-	};
-	
-	void buildMethod(String name){
-		klasa.addMth(factory.createMethod(name));
+	public void buildMethod(String name, LinkedList<String> bytecode){
+		klasa.addMth(factory.createMethod(name, bytecode));
+		//Interpreter.interpreteMethod(klasa.getMethod(name), klasa); <<CHECK>>
 	}
 	
-	void toMemory(Memory m){
+	public Klasa getKlasa(){
+		return this.klasa;
+	}
+	
+	public void addClass(Klasa k, String name){
+		klasa.addKlasa(k, name);
+	}
+	
+	public void deleteKlasa(){
+		this.klasa = null;
+	}
+	
+	public void toMemory(Memory m){
 		m.addClass(klasa);
 		klasa = null;
 	}
 	
-	void printClass(){
+	public void printClass(){
 		System.out.println("Klasa w builderze: ");
 		System.out.println("Nazwa: " + klasa.name);
+		klasa.print();
 	}
 }

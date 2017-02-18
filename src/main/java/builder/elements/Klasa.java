@@ -5,7 +5,7 @@ import factory.methods.*;
 
 public class Klasa {
 	public String name;
-	Method_Area method_area;
+	public Method_Area method_area;
 	
 	public Klasa(){
 		name = null;
@@ -16,12 +16,38 @@ public class Klasa {
 		this.name = name;
 	}
 	
+
 	public void addAtr(Variable z){
+		method_area.addAtr(z);
+	}
+	
+	public void addAtrInt(IntVariable z){
+		method_area.addAtr(z);
+	}
+	
+	public void addAtrChar(CharVariable z){
+		method_area.addAtr(z);
+	}
+	
+	public void addAtrDouble(DoubleVariable z){
 		method_area.addAtr(z);
 	}
 	
 	public void addMth(Method m){
 		method_area.addMth(m);
+	}
+	
+	public void addKlasa(Klasa k, String name){
+		method_area.addKlasa(k, name);
+	}
+	
+	public Method getMethod(String name){
+		return method_area.callMethod(name);
+	}
+	
+	public void print(){
+		System.out.println(name);
+		method_area.print();
 	}
 	
 }

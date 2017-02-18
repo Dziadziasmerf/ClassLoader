@@ -18,8 +18,19 @@ public class Heap {
 		klasy.clear();
 	}
 	
+	public boolean isEmpty(){
+		if(klasy.isEmpty() == true) return true;
+		return false;
+	}
+	
 	public String makeString(){
 		return klasy.toString();
 	}
 	
+	public void print(){
+		for(int i = 0; i < klasy.size(); i++){
+			klasy.get(i).print();
+		}
+		
+	}
 }

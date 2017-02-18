@@ -1,0 +1,3 @@
+init mojaKlasa2
+i zmienna 44
+end
