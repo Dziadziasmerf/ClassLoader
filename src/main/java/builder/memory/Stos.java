@@ -1,7 +1,6 @@
 package builder.memory;
 
 import factory.variables.*;
-//import java.awt.Frame;
 import java.util.*;
 
 public class Stos {
@@ -12,7 +11,7 @@ public class Stos {
 	}
 	
 	public void push(Variable f){
-		stos.push(f);
+		if(f != null) stos.push(f);
 	}
 	
 	public Variable pop(){
